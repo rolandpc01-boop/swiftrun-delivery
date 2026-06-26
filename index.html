@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftRun | Premium Ultra-Fast Delivery Service</title>
+    <meta name="description" content="SwiftRun provides premium, lightning-fast courier and delivery services across the metropolitan area. Track packages, check our delivery area, and contact us.">
+    <!-- Outfit Font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for clean icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for premium dynamic graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Wrapper containing Hero and Navbar -->
+    <div class="hero-bg-container">
+        <!-- Sleek Floating Navbar -->
+        <header>
+            <nav class="navbar" id="navbar">
+                <a href="#" class="logo" id="nav-logo">
+                    <span class="logo-accent">Swift</span>Run
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                    <li class="dropdown">
+                        <a href="#delivery-area" class="nav-link" id="menu-area">Our Delivery Area <i class="fa-solid fa-chevron-down" style="font-size: 11px; margin-left: 4px;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#delivery-area" onclick="selectDeliveryArea('downtown')">Downtown Core</a></li>
+                            <li><a href="#delivery-area" onclick="selectDeliveryArea('suburbs')">North & West Suburbs</a></li>
+                            <li><a href="#delivery-area" onclick="selectDeliveryArea('industrial')">Industrial Districts</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact" class="nav-link nav-btn" id="menu-contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <span class="badge">⚡ Lightning Fast Delivery</span>
+                <h1>Hyperlocal Delivery <br><span class="gradient-text">Redefined.</span></h1>
+                <p>Get your packages, documents, and essentials delivered in under 20 minutes. Reliable, secure, and fully tracked in real-time.</p>
+                <div class="hero-actions">
+                    <a href="#delivery-area" class="btn btn-primary" id="btn-coverage">Check Coverage</a>
+                    <a href="#contact" class="btn btn-secondary" id="btn-get-in-touch">Get in Touch</a>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>18m</h3>
+                        <p>Avg. Delivery Time</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <h3>99.9%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Live Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Our Delivery Area Section -->
+    <section id="delivery-area" class="section delivery-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Coverage</span>
+                <h2>Our Delivery Area</h2>
+                <p>We are constantly expanding our zone to bring ultra-fast logistics right to your doorstep. Currently serving key metro zones.</p>
+            </div>
+            
+            <div class="delivery-grid">
+                <!-- Delivery Info / List -->
+                <div class="delivery-info">
+                    <div class="area-card" id="area-downtown" onclick="selectDeliveryArea('downtown')">
+                        <div class="area-icon"><i class="fa-solid fa-city"></i></div>
+                        <div class="area-details">
+                            <h3>Downtown Core</h3>
+                            <p>Average delivery in 12–15 minutes. 24/7 operations.</p>
+                        </div>
+                    </div>
+                    <div class="area-card" id="area-suburbs" onclick="selectDeliveryArea('suburbs')">
+                        <div class="area-icon"><i class="fa-solid fa-tree-city"></i></div>
+                        <div class="area-details">
+                            <h3>North & West Suburbs</h3>
+                            <p>Average delivery in 20–25 minutes. 7:00 AM – Midnight.</p>
+                        </div>
+                    </div>
+                    <div class="area-card" id="area-industrial" onclick="selectDeliveryArea('industrial')">
+                        <div class="area-icon"><i class="fa-solid fa-warehouse"></i></div>
+                        <div class="area-details">
+                            <h3>Industrial Districts</h3>
+                            <p>Dedicated cargo and bulk delivery routes. Scheduled daily.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coverage Dashboard Widget -->
+                <div class="coverage-dashboard" id="coverage-dashboard">
+                    <div class="dashboard-tabs">
+                        <button class="tab-btn active" id="tab-map" onclick="switchDashboardTab('map')">
+                            <i class="fa-solid fa-map-location-dot"></i> Live Map
+                        </button>
+                        <button class="tab-btn" id="tab-stats" onclick="switchDashboardTab('stats')">
+                            <i class="fa-solid fa-chart-line"></i> Rider Activity
+                        </button>
+                    </div>
+                    
+                    <div class="dashboard-content">
+                        <!-- Tab 1: Map Coverage -->
+                        <div class="tab-pane active" id="pane-map">
+                            <div class="map-container" id="map-mockup">
+                                <div class="map-overlay">
+                                    <div class="map-pulse"></div>
+                                    <div class="map-tooltip">
+                                        <strong>Active Dispatch</strong>
+                                        <span id="tooltip-rider-count">Active riders: 142</span>
+                                    </div>
+                                </div>
+                                <img src="images/handover.png" alt="Delivery Rider Handover" class="map-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Tab 2: Live Rider Chart -->
+                        <div class="tab-pane" id="pane-stats">
+                            <div class="chart-container-wrapper">
+                                <div class="chart-header">
+                                    <span class="live-indicator"><span class="pulse-dot"></span> LIVE SIMULATION RUNNING</span>
+                                    <button class="btn-sim-control" id="sim-control-btn" onclick="toggleRiderSimulation()">Pause</button>
+                                </div>
+                                <div class="canvas-height-holder">
+                                    <canvas id="riderChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section contact-section">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <span class="section-tag">Connect</span>
+                    <h2>Let's Start a Partnership</h2>
+                    <p>Have questions about bulk enterprise rates, delivery routes, or career opportunities? Reach out and our team will get back to you within the hour.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item" id="contact-phone">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+1 (800) 555-SWIFT</p>
+                            </div>
+                        </div>
+                        <div class="contact-item" id="contact-email">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>hello@swiftrun.delivery</p>
+                            </div>
+                        </div>
+                        <div class="contact-item" id="contact-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4>Headquarters</h4>
+                                <p>500 Courier Ave, Suite 100, Metro City</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container" id="contact-form-block">
+                    <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully! Our dispatch team will contact you shortly.');">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" required placeholder="John Doe">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="subject">How can we help?</label>
+                                <select id="subject">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="business">Business / Enterprise Delivery</option>
+                                    <option value="rider">Become a Rider</option>
+                                    <option value="support">Customer Support</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" required placeholder="Tell us about your delivery needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" id="btn-submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 SwiftRun Delivery Service. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" id="footer-privacy">Privacy Policy</a>
+                <a href="#" id="footer-terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Logic: Scroll Effect, Tabs, Live Simulation & Chart -->
+    <script>
+        // Scroll Navbar Style Trigger
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Dashboard Tab Switcher
+        function switchDashboardTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            
+            if (tabName === 'map') {
+                document.getElementById('tab-map').classList.add('active');
+                document.getElementById('pane-map').classList.add('active');
+            } else {
+                document.getElementById('tab-stats').classList.add('active');
+                document.getElementById('pane-stats').classList.add('active');
+                if (riderChart) {
+                    // Force resize and repaint when showing hidden canvas
+                    riderChart.resize();
+                }
+            }
+        }
+
+        // Live Active Rider Stats Simulation
+        let simulationInterval;
+        let isSimulationRunning = true;
+        let riderChart;
+
+        // Start with historical data for the last hour
+        const initialLabels = ['13:40', '13:50', '14:00', '14:10', '14:20', '14:30', '14:40', '14:50'];
+        const dataDowntown = [135, 138, 142, 140, 145, 148, 144, 142];
+        const dataSuburbs = [48, 52, 50, 53, 56, 54, 55, 53];
+        const dataIndustrial = [18, 20, 22, 21, 19, 23, 22, 21];
+
+        function initRiderChart() {
+            const ctx = document.getElementById('riderChart').getContext('2d');
+            
+            riderChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: initialLabels,
+                    datasets: [
+                        {
+                            label: 'Downtown Core',
+                            data: dataDowntown,
+                            borderColor: '#00f2fe',
+                            backgroundColor: 'rgba(0, 242, 254, 0.05)',
+                            borderWidth: 2.5,
+                            pointBackgroundColor: '#00f2fe',
+                            pointRadius: 3,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Suburbs',
+                            data: dataSuburbs,
+                            borderColor: '#38ef7d',
+                            backgroundColor: 'rgba(56, 239, 125, 0.05)',
+                            borderWidth: 2.5,
+                            pointBackgroundColor: '#38ef7d',
+                            pointRadius: 3,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Industrial',
+                            data: dataIndustrial,
+                            borderColor: '#ff7b00',
+                            backgroundColor: 'rgba(255, 123, 0, 0.05)',
+                            borderWidth: 2.5,
+                            pointBackgroundColor: '#ff7b00',
+                            pointRadius: 3,
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Outfit',
+                                    size: 12
+                                },
+                                boxWidth: 12,
+                                padding: 15
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.04)'
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Outfit',
+                                    size: 11
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.04)'
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Outfit',
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Configuration mapping for map hotspots
+        const areaMapConfig = {
+            downtown: {
+                name: 'Downtown Core',
+                top: '48%',
+                left: '52%',
+                datasetIndex: 0,
+                cardId: 'area-downtown'
+            },
+            suburbs: {
+                name: 'North & West Suburbs',
+                top: '25%',
+                left: '30%',
+                datasetIndex: 1,
+                cardId: 'area-suburbs'
+            },
+            industrial: {
+                name: 'Industrial Districts',
+                top: '72%',
+                left: '74%',
+                datasetIndex: 2,
+                cardId: 'area-industrial'
+            }
+        };
+
+        let currentSelectedArea = null;
+
+        function selectDeliveryArea(areaId) {
+            const config = areaMapConfig[areaId];
+            if (!config) return;
+            
+            // If already selected, reset view
+            if (currentSelectedArea === areaId) {
+                resetDeliveryAreaView();
+                return;
+            }
+            
+            currentSelectedArea = areaId;
+
+            // 1. Highlight card
+            document.querySelectorAll('.area-card').forEach(card => {
+                card.classList.remove('active-card');
+            });
+            const cardEl = document.getElementById(config.cardId);
+            if (cardEl) {
+                cardEl.classList.add('active-card');
+            }
+            
+            // 2. Position map pulse and tooltip
+            const pulse = document.querySelector('.map-pulse');
+            const tooltip = document.querySelector('.map-tooltip');
+            
+            if (pulse && tooltip) {
+                pulse.style.top = config.top;
+                pulse.style.left = config.left;
+                
+                const topPercent = parseInt(config.top);
+                const leftPercent = parseInt(config.left);
+                tooltip.style.top = `${topPercent - 15}%`;
+                tooltip.style.left = `${leftPercent - 12}%`;
+                
+                tooltip.querySelector('strong').innerText = config.name;
+                
+                if (riderChart) {
+                    const count = riderChart.data.datasets[config.datasetIndex].data[riderChart.data.datasets[config.datasetIndex].data.length - 1];
+                    document.getElementById('tooltip-rider-count').innerText = `Active riders: ${count}`;
+                }
+            }
+            
+            // 3. Highlight dataset line in chart
+            if (riderChart) {
+                const originalColors = ['#00f2fe', '#38ef7d', '#ff7b00'];
+                const fadedColors = ['rgba(0, 242, 254, 0.12)', 'rgba(56, 239, 125, 0.12)', 'rgba(255, 123, 0, 0.12)'];
+                
+                riderChart.data.datasets.forEach((dataset, idx) => {
+                    if (idx === config.datasetIndex) {
+                        dataset.borderWidth = 4.0;
+                        dataset.borderColor = originalColors[idx];
+                        dataset.pointRadius = 4;
+                    } else {
+                        dataset.borderWidth = 1.0;
+                        dataset.borderColor = fadedColors[idx];
+                        dataset.pointRadius = 0;
+                    }
+                });
+                riderChart.update();
+            }
+        }
+
+        function resetDeliveryAreaView() {
+            currentSelectedArea = null;
+            
+            // Clear card highlights
+            document.querySelectorAll('.area-card').forEach(card => {
+                card.classList.remove('active-card');
+            });
+            
+            // Reset map
+            const pulse = document.querySelector('.map-pulse');
+            const tooltip = document.querySelector('.map-tooltip');
+            
+            if (pulse && tooltip) {
+                pulse.style.top = '45%';
+                pulse.style.left = '55%';
+                tooltip.style.top = '30%';
+                tooltip.style.left = '45%';
+                tooltip.querySelector('strong').innerText = 'Active Dispatch';
+                
+                if (riderChart) {
+                    const count0 = riderChart.data.datasets[0].data[riderChart.data.datasets[0].data.length - 1];
+                    const count1 = riderChart.data.datasets[1].data[riderChart.data.datasets[1].data.length - 1];
+                    const count2 = riderChart.data.datasets[2].data[riderChart.data.datasets[2].data.length - 1];
+                    document.getElementById('tooltip-rider-count').innerText = `Active riders: ${count0 + count1 + count2}`;
+                }
+            }
+            
+            // Reset chart lines
+            if (riderChart) {
+                const originalColors = ['#00f2fe', '#38ef7d', '#ff7b00'];
+                riderChart.data.datasets.forEach((dataset, idx) => {
+                    dataset.borderWidth = 2.5;
+                    dataset.borderColor = originalColors[idx];
+                    dataset.pointRadius = 3;
+                });
+                riderChart.update();
+            }
+        }
+
+        function updateSimulation() {
+            if (!isSimulationRunning) return;
+            
+            // Random walk simulation
+            const lastDowntown = riderChart.data.datasets[0].data[riderChart.data.datasets[0].data.length - 1];
+            const lastSuburbs = riderChart.data.datasets[1].data[riderChart.data.datasets[1].data.length - 1];
+            const lastIndustrial = riderChart.data.datasets[2].data[riderChart.data.datasets[2].data.length - 1];
+            
+            const newDowntown = Math.max(100, Math.min(180, lastDowntown + Math.floor(Math.random() * 9) - 4));
+            const newSuburbs = Math.max(30, Math.min(80, lastSuburbs + Math.floor(Math.random() * 7) - 3));
+            const newIndustrial = Math.max(10, Math.min(40, lastIndustrial + Math.floor(Math.random() * 5) - 2));
+            
+            // Timestamp format
+            const now = new Date();
+            const newLabel = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+            
+            // Append data
+            riderChart.data.labels.push(newLabel);
+            riderChart.data.datasets[0].data.push(newDowntown);
+            riderChart.data.datasets[1].data.push(newSuburbs);
+            riderChart.data.datasets[2].data.push(newIndustrial);
+            
+            // Restrict window size to 10 entries
+            if (riderChart.data.labels.length > 10) {
+                riderChart.data.labels.shift();
+                riderChart.data.datasets[0].data.shift();
+                riderChart.data.datasets[1].data.shift();
+                riderChart.data.datasets[2].data.shift();
+            }
+            
+            // Sync counts with map UI tooltip
+            if (currentSelectedArea) {
+                const config = areaMapConfig[currentSelectedArea];
+                const count = riderChart.data.datasets[config.datasetIndex].data[riderChart.data.datasets[config.datasetIndex].data.length - 1];
+                document.getElementById('tooltip-rider-count').innerText = `Active riders: ${count}`;
+                
+                // Keep highlights when updates occur
+                const originalColors = ['#00f2fe', '#38ef7d', '#ff7b00'];
+                const fadedColors = ['rgba(0, 242, 254, 0.12)', 'rgba(56, 239, 125, 0.12)', 'rgba(255, 123, 0, 0.12)'];
+                
+                riderChart.data.datasets.forEach((dataset, idx) => {
+                    if (idx === config.datasetIndex) {
+                        dataset.borderWidth = 4.0;
+                        dataset.borderColor = originalColors[idx];
+                        dataset.pointRadius = 4;
+                    } else {
+                        dataset.borderWidth = 1.0;
+                        dataset.borderColor = fadedColors[idx];
+                        dataset.pointRadius = 0;
+                    }
+                });
+            } else {
+                document.getElementById('tooltip-rider-count').innerText = `Active riders: ${newDowntown + newSuburbs + newIndustrial}`;
+            }
+            
+            riderChart.update('none'); // Update without default animation flashes
+        }
+
+        function toggleRiderSimulation() {
+            isSimulationRunning = !isSimulationRunning;
+            const btn = document.getElementById('sim-control-btn');
+            const indicator = document.querySelector('.live-indicator');
+            
+            if (isSimulationRunning) {
+                btn.innerText = 'Pause';
+                btn.classList.remove('paused');
+                indicator.innerHTML = '<span class="pulse-dot"></span> LIVE SIMULATION RUNNING';
+            } else {
+                btn.innerText = 'Resume';
+                btn.classList.add('paused');
+                indicator.innerHTML = '<span class="pulse-dot paused"></span> SIMULATION PAUSED';
+            }
+        }
+
+        // Initialize elements on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initRiderChart();
+            simulationInterval = setInterval(updateSimulation, 3000);
+        });
+    </script>
+</body>
+</html>
